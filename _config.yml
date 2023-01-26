@@ -29,7 +29,7 @@ projects:
     # - repo-name
   include:
     projects:
-      - gotty-repl
+      - openrepl
       - sish-lb
       - Go-interpreter
       - Set
