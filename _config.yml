@@ -32,8 +32,8 @@ projects:
       - openrepl
       - sish-lb
       - Go-interpreter
-      - Set
-      - Queue
+      - dsa
+      - go-dsa
       - raspi-mgr
 
 
