@@ -65,7 +65,7 @@
         "sameAs": [
           "https://github.com/{{ user.login }}"
           {%- for account in site.social_media -%}
-            {%- assign service = site.data.social_media[account[0]] -%}
+            {%- assign service_key = account[0] -%}{%- assign service = site.data.social_media[service_key] -%}
             {%- if service.profile_url_prefix -%}, "{{ service.profile_url_prefix }}{{ account[1] }}"{%- endif -%}
           {%- endfor %}
         ]

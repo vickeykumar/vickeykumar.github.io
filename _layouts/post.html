@@ -13,7 +13,8 @@ layout: default
   <div class="share">
     <span>Share</span>
     {%- for account in site.social_media %}
-      {%- assign service = site.data.social_media[account[0]] %}
+      {%- assign service_key = account[0] %}
+        {%- assign service = site.data.social_media[service_key] %}
       {%- if service.share_url_prefix %}
     <a href="{{ service.share_url_prefix }}{{ page.url | absolute_url | url_encode }}" aria-label="Share on {{ service.name }}" title="Share on {{ service.name }}">{{ service.icon_svg | replace: '#959da5', 'currentColor' | replace: '#959DA5', 'currentColor' }}</a>
       {%- endif %}

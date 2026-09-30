@@ -14,5 +14,5 @@
 {%- assign d_years = d_total | divided_by: 12 -%}
 {%- assign d_months = d_total | modulo: 12 -%}
 {%- if d_years > 0 -%}{{ d_years }} {% if d_years == 1 %}yr{% else %}yrs{% endif %}{%- endif -%}
-{%- if d_years > 0 and d_months > 0 %} {% endif -%}
+{%- if d_years > 0 and d_months > 0 %}{{ ' ' }}{% endif -%}
 {%- if d_months > 0 -%}{{ d_months }} {% if d_months == 1 %}mo{% else %}mos{% endif %}{%- endif -%}

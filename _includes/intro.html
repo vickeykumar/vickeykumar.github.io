@@ -6,7 +6,8 @@
     <div class="readme-text">
       <h2>{{ readme.heading }}</h2>
       <p class="readme-tagline">{{ readme.tagline }}</p>
-      <p class="readme-summary">{{ readme.summary | replace: '{years}', career_years }}</p>
+      {%- assign summary = readme.summary | replace: '{years}', career_years %}
+      <p class="readme-summary">{{ summary }}</p>
     </div>
 
     <div class="terminal" role="img" aria-label="Terminal window summarising Vickey’s role, focus, open-source work and experience">
@@ -28,7 +29,8 @@
     <div class="stats">
       {%- for stat in readme.stats %}
       <div class="stat">
-        <div class="stat-value">{{ stat.value | replace: '{years}', career_years | replace: '{openrepl_stars}', openrepl_stars }}{% if stat.star %} <span class="star" aria-hidden="true">★</span>{% endif %}</div>
+        {%- assign stat_value = stat.value | replace: '{years}', career_years | replace: '{openrepl_stars}', openrepl_stars %}
+        <div class="stat-value">{{ stat_value }}{% if stat.star %} <span class="star" aria-hidden="true">★</span>{% endif %}</div>
         <div class="stat-label">{{ stat.label }}</div>
       </div>
       {%- endfor %}
