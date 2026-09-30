@@ -1,0 +1,51 @@
+{%- comment -%}
+  Inline SVG icons. Usage: {% include icon.html name="star" px=16 %}
+  Icons use currentColor, so they follow the surrounding text colour.
+{%- endcomment -%}
+{%- assign icon_size = include.px | default: 16 -%}
+{%- capture icon_attrs %}class="icon{% if include.class %} {{ include.class }}{% endif %}" width="{{ icon_size }}" height="{{ icon_size }}" aria-hidden="true" focusable="false"{% endcapture -%}
+{%- capture icon_stroke %}fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"{% endcapture -%}
+{%- case include.name -%}
+{%- when 'mark-github' -%}
+<svg {{ icon_attrs }} viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+{%- when 'mail' -%}
+<svg {{ icon_attrs }} viewBox="0 0 14 16" fill="currentColor"><path d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/></svg>
+{%- when 'briefcase' -%}
+<svg {{ icon_attrs }} viewBox="0 0 14 16" fill="currentColor"><path d="M9 4V3c0-.55-.45-1-1-1H6c-.55 0-1 .45-1 1v1H1c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1H9zM6 3h2v1H6V3zm7 6H8v1H6V9H1V5h1v3h10V5h1v4z"/></svg>
+{%- when 'location' -%}
+<svg {{ icon_attrs }} viewBox="0 0 12 16" fill="currentColor"><path d="M6 0C2.69 0 0 2.5 0 5.5 0 10.02 6 16 6 16s6-5.98 6-10.5C12 2.5 9.31 0 6 0zm0 14.55C4.14 12.52 1 8.44 1 5.5 1 3.02 3.25 1 6 1c1.34 0 2.61.48 3.56 1.36.92.86 1.44 1.97 1.44 3.14 0 2.94-3.14 7.02-5 9.05zM8 5.5c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+{%- when 'book' -%}
+<svg {{ icon_attrs }} viewBox="0 0 16 16" fill="currentColor"><path d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"/></svg>
+{%- when 'repo' -%}
+<svg {{ icon_attrs }} viewBox="0 0 12 16" fill="currentColor"><path d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+{%- when 'star' -%}
+<svg {{ icon_attrs }} viewBox="0 0 14 16" fill="currentColor"><path d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg>
+{%- when 'fork' -%}
+<svg {{ icon_attrs }} viewBox="0 0 10 16" fill="currentColor"><path d="M10 5c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v.3c-.02.52-.23.98-.63 1.38-.4.4-.86.61-1.38.63-.83.02-1.48.16-2 .45V4.72a1.993 1.993 0 0 0-1-3.72C.88 1 0 1.89 0 3a2 2 0 0 0 1 1.72v6.56c-.59.35-1 .99-1 1.72 0 1.11.89 2 2 2 1.11 0 2-.89 2-2 0-.53-.2-1-.53-1.36.09-.06.48-.41.59-.47.25-.11.56-.17.94-.17 1.05-.05 1.95-.45 2.75-1.25S8.95 7.770 9 6.73h-.02C9.59 6.37 10 5.73 10 5zM2 1.8c.66 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2C1.35 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2zm0 12.41c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm6-8c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+{%- when 'tool' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+{%- when 'sun' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+{%- when 'moon' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+{%- when 'zap' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+{%- when 'box' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+{%- when 'link' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
+{%- when 'code' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>
+{%- when 'education' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
+{%- when 'paper' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6M9 13h8M9 17h6"/></svg>
+{%- when 'award' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>
+{%- when 'external' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M7 17L17 7M8 7h9v9"/></svg>
+{%- when 'arrow-right' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+{%- when 'arrow-left' -%}
+<svg {{ icon_attrs }} viewBox="0 0 24 24" {{ icon_stroke }}><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+{%- endcase -%}

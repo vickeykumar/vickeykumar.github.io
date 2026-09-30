@@ -1,10 +1,5 @@
-<div class="height-full text-left {% if site.style == 'dark' %}box-shadow{% else %}border border-gray-light{% endif %} bg-white rounded-1 p-3">
-  <div class="d-flex flex-justify-between flex-items-start mb-1">
-    <h1 class="f4 lh-condensed mb-1">
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-  </div>
-  <div class="text-gray mb-2 ws-normal">{{ post.date | date: "%b %d, %Y"}}</div>
-</div>
+<article class="box repo">
+  <a class="repo-name" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  <p class="repo-desc">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+  <div class="repo-meta"><span>{{ post.date | date: "%b %d, %Y" }}</span></div>
+</article>

@@ -1,47 +1,82 @@
-{% if site.style == 'dark' %}
-  {% assign icon_color = "#ffffff" %}
-{% else %}
-  {% assign icon_color = "#24292e" %}
-{% endif %}
-
-{% assign content = page.content %}
-
-{% assign posts_total = site.posts | size %}
-
-{% assign user = site.github.owner %}
-
-{% if page.path contains '_posts' %}
-  {% assign page_title = page.title %}
-  {% assign meta_description = page.content | strip_html | strip_newlines | xml_escape | truncate: 300 %}
-{% else %}
-  {% assign page_title = user.name %}
-  {% assign meta_description = user.bio | strip_html | strip_newlines | xml_escape | truncate: 300 %}
-{% endif %}
-
+{%- if page.path contains '_posts' -%}
+  {%- assign page_title = page.title | append: ' · ' | append: display_name -%}
+  {%- assign meta_description = page.excerpt | default: page.content | strip_html | strip_newlines | xml_escape | truncate: 160 -%}
+{%- elsif page.title -%}
+  {%- assign page_title = page.title | append: ' · ' | append: display_name -%}
+  {%- assign meta_description = site.description | strip_newlines | xml_escape -%}
+{%- else -%}
+  {%- assign page_title = display_name | append: ' · ' | append: site.tagline -%}
+  {%- assign meta_description = site.description | strip_newlines | xml_escape -%}
+{%- endif -%}
 <!doctype html>
-<html class="min-height-full">
+<html lang="en" class="no-js">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.className = d.className.replace('no-js', 'js');
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    {%- if site.google_tag_manager %}
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PCFP6QG');</script>
+    })(window,document,'script','dataLayer','{{ site.google_tag_manager }}');</script>
     <!-- End Google Tag Manager -->
-    <meta charset="utf-8">
+    {%- endif %}
     <title>{{ page_title }}</title>
-    <meta name="description" content="{{ meta_description }}" />
-    <meta property="og:title" content="{{ user.name }}" />
-    <meta property="og:image" content="{{ user.avatar_url }}" />
-    <meta property="og:description" content="{{ meta_description }}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {{% if site.google_verify %}}
-      <meta name="google-site-verification" content="{{ site.google_verify }}" />
-    {{% endif %}}
-    <link href="{{ "/assets/styles.css" | relative_url }}" rel="stylesheet" type="text/css">
+    <meta name="description" content="{{ meta_description }}">
+    <meta name="author" content="{{ display_name }}">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fafbfc">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:type" content="{% if page.path contains '_posts' %}article{% else %}profile{% endif %}">
+    <meta property="og:title" content="{{ page_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ avatar }}">
+    <meta name="twitter:card" content="summary">
+    {%- if site.social_media.twitter %}
+    <meta name="twitter:site" content="@{{ site.social_media.twitter }}">
+    {%- endif %}
+    {%- if site.google_verify %}
+    <meta name="google-site-verification" content="{{ site.google_verify }}">
+    {%- endif %}
+    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
+    <script src="{{ '/assets/main.js' | relative_url }}" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": {{ display_name | jsonify }},
+        "url": {{ site.url | jsonify }},
+        "image": {{ avatar | jsonify }},
+        "jobTitle": {{ profile.job_title | jsonify }},
+        "worksFor": { "@type": "Organization", "name": {{ profile.employer | jsonify }} },
+        "sameAs": [
+          "https://github.com/{{ user.login }}"
+          {%- for account in site.social_media -%}
+            {%- assign service = site.data.social_media[account[0]] -%}
+            {%- if service.profile_url_prefix -%}, "{{ service.profile_url_prefix }}{{ account[1] }}"{%- endif -%}
+          {%- endfor %}
+        ]
+      }
+    </script>
   </head>
-  <body class="bg-white min-height-full" {% if site.style == 'dark' %}style="background-color: #2f363d !important"{% endif %}>
+  <body>
+    {%- if site.google_tag_manager %}
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCFP6QG"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.google_tag_manager }}"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    {%- endif %}
+    <a class="skip-link" href="#content">Skip to content</a>

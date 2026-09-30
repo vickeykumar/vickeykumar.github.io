@@ -1,0 +1,66 @@
+# Content for the top of the main page and the featured project.
+# {years} is replaced with the years since career_start in _config.yml.
+# {openrepl_stars} is replaced with OpenREPL's live star count from GitHub.
+
+readme:
+  heading: Hi, I’m Vickey.
+  tagline: I build scalable, efficient systems for networks and the cloud.
+  summary: >-
+    I’m a Software Engineer IV at Cisco with {years}+ years in carrier-grade
+    networking software, from IOS-XR platform infrastructure at Cisco to IMS
+    configuration services at Nokia. On the side I built
+    <a href="#openrepl">OpenREPL</a>, an open-source platform for running and
+    sharing code in the browser.
+  stats:
+    - value: "{years}+"
+      label: years in distributed systems and Networking software
+    - value: "{openrepl_stars}"
+      star: true
+      label: OpenREPL stars on GitHub
+
+# The terminal window next to the intro. "short" is used on narrow screens.
+terminal:
+  title: "vickey@bengaluru: ~"
+  lines:
+    - cmd: whoami
+      out: vickey kumar · software engineer iv @ cisco
+      short: vickey kumar · swe iv @ cisco
+    - cmd: cat focus.txt
+      out: IOS-XR platform · ether-infra · alarm_mgr
+      short: ios-xr · ether-infra · alarm_mgr
+    - cmd: ls ~/open-source
+      out: '<span class="term-hl">openrepl/</span>  sish-lb/  Go-interpreter/  go-dsa/'
+      short: '<span class="term-hl">openrepl/</span>  sish-lb/  go-dsa/'
+    - cmd: uptime
+      out: "{years}+ years in distributed systems &amp; networking"
+      short: "{years}+ yrs in distributed systems"
+
+# "My recent public work"
+featured:
+  title: My recent public work
+  subtitle: The project I’ve been building since 2015.
+  repo: openrepl
+  tagline: Run and test code snippets instantly, right in the browser.
+  description: >-
+    A handy tool for exploratory programming and debugging, and a quick way in
+    when you’re learning a new language. It started as gorepl.com and grew into
+    OpenREPL.
+  site_url: https://openrepl.com/
+  site_label: Try openrepl.com
+  demo_video: /assets/openrepl-demo.mp4
+  demo_video_webm: /assets/openrepl-demo.webm
+  demo_poster: /assets/openrepl-demo-poster.jpg
+  demo_alt: Screen recording of OpenREPL, then gorepl.com, running C, Python and Go snippets in the browser
+  features:
+    - icon: zap
+      title: Instant REPLs
+      text: C, C++, Go, Python and more, with no setup.
+    - icon: box
+      title: Isolated sessions
+      text: Every REPL runs in its own container, spun up on demand.
+    - icon: link
+      title: Share your session
+      text: Send a link to your live REPL or IDE and code together.
+    - icon: code
+      title: Built in Go
+      text: WebSocket terminals on xterm.js, shipped with Docker.

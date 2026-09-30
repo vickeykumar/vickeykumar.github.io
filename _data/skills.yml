@@ -1,0 +1,13 @@
+# Skills, shown as groups of tags.
+
+- group: Languages
+  items: [golang, c, cpp, python, javascript]
+
+- group: Networking and systems
+  items: [ios-xr, fault-management, snmp-mib, socket-programming, multithreading, linux-system-programming]
+
+- group: Cloud and platform
+  items: [docker, containers, rest-api, high-availability, event-driven, parallel-programming]
+
+- group: Testing and data
+  items: [pyats, test-automation, unit-testing, data-mining, social-network-analysis]

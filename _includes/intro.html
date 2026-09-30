@@ -1,0 +1,37 @@
+{%- assign readme = site.data.profile.readme -%}
+{%- assign term = site.data.profile.terminal -%}
+<section class="box readme" aria-label="Introduction">
+  <div class="readme-head">{% include icon.html name="book" %}<span>{{ user.login }} / README.md</span></div>
+  <div class="readme-body">
+    <div class="readme-text">
+      <h2>{{ readme.heading }}</h2>
+      <p class="readme-tagline">{{ readme.tagline }}</p>
+      <p class="readme-summary">{{ readme.summary | replace: '{years}', career_years }}</p>
+    </div>
+
+    <div class="terminal" role="img" aria-label="Terminal window summarising Vickey’s role, focus, open-source work and experience">
+      <div class="term-bar" aria-hidden="true">
+        <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+        <span class="term-title">{{ term.title }}</span>
+      </div>
+      <div class="term-body" aria-hidden="true">
+        {%- for line in term.lines %}
+        <div class="term-cmd"><span class="term-prompt">$</span> {{ line.cmd }}</div>
+        {%- assign long_out = line.out | replace: '{years}', career_years -%}
+        {%- assign short_out = line.short | default: line.out | replace: '{years}', career_years %}
+        <div class="term-out"><span class="t-long">{{ long_out }}</span><span class="t-short">{{ short_out }}</span></div>
+        {%- endfor %}
+        <div class="term-cmd"><span class="term-prompt">$</span> <span class="cursor"></span></div>
+      </div>
+    </div>
+
+    <div class="stats">
+      {%- for stat in readme.stats %}
+      <div class="stat">
+        <div class="stat-value">{{ stat.value | replace: '{years}', career_years | replace: '{openrepl_stars}', openrepl_stars }}{% if stat.star %} <span class="star" aria-hidden="true">★</span>{% endif %}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

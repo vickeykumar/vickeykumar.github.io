@@ -1,0 +1,49 @@
+# Work history, newest first. Dates are YYYY-MM.
+# Leave "end" out for a current position; durations are worked out automatically.
+
+subtitle: IOS-XR at Cisco since 2017, after IMS at Nokia Networks.
+
+companies:
+  - name: Cisco
+    location: Bengaluru, India
+    type: Full-time
+    start: "2017-10"
+    roles:
+      - title: Software Engineer IV
+        start: "2025-10"
+        points:
+          - Lead development and sustenance of the ether-infra components.
+          - Mentor the alarm_mgr team on design, debugging and code quality.
+          - Drive cross-functional work to keep integration smooth and the platform stable.
+        tags: [ether-infra, api-design, mentorship]
+      - title: Software Engineer III
+        start: "2021-10"
+        end: "2025-10"
+        points:
+          - Owned sustenance of the Calvados platform components as they moved to maintenance.
+          - Built the automation test framework for AM, FM and ctrace from scratch on pyATS and VXR.
+          - Shipped opticalotsmib for the NCS 1010 optical platform, with its own integration test suite.
+        tags: [pyats, python, snmp-mib, optical-networking]
+      - title: Software Engineer II
+        start: "2017-10"
+        end: "2021-10"
+        points:
+          - "Worked on IOS-XR platform-independent components: alarm manager, the ctrace logging library and shelf_mgr."
+          - Solved alarm resync between the XR and Calvados alarm managers, alarm flow control and ctrace log rotation.
+          - Added CISCO-ALARM-MIB support.
+        tags: [c, ios-xr, linux, fault-management]
+
+  - name: Nokia Networks
+    location: Bengaluru, India
+    type: Full-time
+    start: "2015-07"
+    end: "2017-10"
+    roles:
+      - title: Software Engineer
+        start: "2015-07"
+        end: "2017-10"
+        points:
+          - Built Go APIs for CMRepo, the highly available configuration server for Nokia’s IMS, plus the C++ Nemlib client APIs.
+          - Cut backup and restore memory use by 50% and sped up change notifications for the HCVNF feature.
+          - Designed an automated MT test framework and fixed performance issues with leaky-bucket rate limiting and parallel processing.
+        tags: [golang, cpp, python, rest-api, high-availability]

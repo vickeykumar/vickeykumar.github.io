@@ -1,0 +1,8 @@
+<div class="theme-toggle{% if include.compact %} theme-toggle--compact{% endif %}" role="group" aria-label="Colour theme">
+  <button type="button" data-theme-value="light" aria-pressed="false"{% if include.compact %} aria-label="Light theme"{% endif %}>
+    {% include icon.html name="sun" px=15 %}{% unless include.compact %}<span>Light</span>{% endunless %}
+  </button>
+  <button type="button" data-theme-value="dark" aria-pressed="false"{% if include.compact %} aria-label="Dark theme"{% endif %}>
+    {% include icon.html name="moon" px=15 %}{% unless include.compact %}<span>Dark</span>{% endunless %}
+  </button>
+</div>

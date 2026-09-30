@@ -1,0 +1,18 @@
+{%- comment -%}
+  Prints a LinkedIn-style duration such as "9 yrs" or "2 yrs 4 mos".
+  Usage: {% include duration.html start="2015-07" end="2017-10" %} (leave end out for "present").
+{%- endcomment -%}
+{%- assign d_start = include.start | split: '-' -%}
+{%- assign d_start_m = d_start[0] | plus: 0 | times: 12 | plus: d_start[1] -%}
+{%- if include.end -%}
+  {%- assign d_end = include.end | split: '-' -%}
+  {%- assign d_end_m = d_end[0] | plus: 0 | times: 12 | plus: d_end[1] -%}
+{%- else -%}
+  {%- assign d_end_m = now_months -%}
+{%- endif -%}
+{%- assign d_total = d_end_m | minus: d_start_m | plus: 1 -%}
+{%- assign d_years = d_total | divided_by: 12 -%}
+{%- assign d_months = d_total | modulo: 12 -%}
+{%- if d_years > 0 -%}{{ d_years }} {% if d_years == 1 %}yr{% else %}yrs{% endif %}{%- endif -%}
+{%- if d_years > 0 and d_months > 0 %} {% endif -%}
+{%- if d_months > 0 -%}{{ d_months }} {% if d_months == 1 %}mo{% else %}mos{% endif %}{%- endif -%}

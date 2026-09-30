@@ -1,0 +1,50 @@
+{%- assign experience = site.data.experience -%}
+<section id="experience" aria-labelledby="experience-title">
+  <h2 class="section-title" id="experience-title">Experience</h2>
+  {%- if experience.subtitle %}
+  <p class="section-sub">{{ experience.subtitle }}</p>
+  {%- endif %}
+
+  <ol class="timeline">
+    {%- for company in experience.companies %}
+    <li class="tl-item">
+      <span class="tl-badge" aria-hidden="true">{% include icon.html name="briefcase" px=14 %}</span>
+      <div class="tl-head">
+        <h3 class="tl-company">{{ company.name }}</h3>
+        <p class="tl-meta">
+          {{ company.location }}{% if company.type %} · {{ company.type }}{% endif %} ·
+          {{ company.start | append: '-01' | date: '%b %Y' }} – {% if company.end %}{{ company.end | append: '-01' | date: '%b %Y' }}{% else %}Present{% endif %} ·
+          {% include duration.html start=company.start end=company.end %}
+        </p>
+      </div>
+      <div class="roles">
+        {%- for role in company.roles %}
+        <article class="box role">
+          <div class="role-head">
+            <h4 class="role-title">
+              {{ role.title }}
+              {%- unless role.end %} <span class="label label-green">Current</span>{% endunless %}
+            </h4>
+            <span class="role-date">{{ role.start | append: '-01' | date: '%b %Y' }} – {% if role.end %}{{ role.end | append: '-01' | date: '%b %Y' }}{% else %}Present{% endif %}</span>
+          </div>
+          {%- if role.points %}
+          <ul>
+            {%- for point in role.points %}
+            <li>{{ point }}</li>
+            {%- endfor %}
+          </ul>
+          {%- endif %}
+          {%- if role.tags %}
+          <div class="topics">
+            {%- for tag in role.tags %}
+            <span class="topic">{{ tag }}</span>
+            {%- endfor %}
+          </div>
+          {%- endif %}
+        </article>
+        {%- endfor %}
+      </div>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>

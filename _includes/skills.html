@@ -1,0 +1,16 @@
+<section id="skills" aria-labelledby="skills-title">
+  <h2 class="section-title" id="skills-title">Skills</h2>
+  <p class="section-sub">What I work with day to day.</p>
+  <div class="box skills">
+    {%- for group in site.data.skills %}
+    <div class="skill-row">
+      <h3 class="skill-name">{{ group.group }}</h3>
+      <div class="topics">
+        {%- for item in group.items %}
+        <span class="topic">{{ item }}</span>
+        {%- endfor %}
+      </div>
+    </div>
+    {%- endfor %}
+  </div>
+</section>

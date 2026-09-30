@@ -1,8 +1,23 @@
-layout: sidebar
-style: light
+# ------------------------------------------------------------------
+# vickeykumar.github.io
+#
+# Most of the page content lives in the _data folder:
+#   _data/profile.yml      intro card, terminal, featured project
+#   _data/experience.yml   work history
+#   _data/skills.yml       skills
+#   _data/credentials.yml  education, publications, certifications
+# Repository stats (stars, forks, language) and your photo are pulled
+# live from GitHub every time the site builds.
+# ------------------------------------------------------------------
+
+title: Vickey Kumar
+tagline: Software Engineer, Networking & Cloud
+description: >-
+  Vickey Kumar is a Software Engineer IV at Cisco building scalable, efficient
+  systems for networks and the cloud, and the creator of OpenREPL.
+url: https://vickeykumar.github.io
 
 plugins:
-  - jekyll-octicons
   - jekyll-github-metadata
   - jemoji
 
@@ -16,26 +31,46 @@ defaults:
     values:
       layout: "post"
 
-projects:
-  sort_by: pushed
-  # sort_by options:
-  #   - pushed
-  #   - stars
-  limit: 9
-  exclude:
-    archived: false
-    forks: false
-    projects:
-    # - repo-name
-  include:
-    projects:
-      - openrepl
-      - sish-lb
-      - Go-interpreter
-      - dsa
-      - go-dsa
-      - raspi-mgr
+exclude:
+  - README.md
+  - LICENSE.txt
+  - Gemfile
+  - Gemfile.lock
+  - vendor
 
+# Left sidebar. Anything left empty falls back to your GitHub profile.
+profile:
+  name: Vickey Kumar
+  bio: 'Networking &amp; cloud · Creator of <a href="https://openrepl.com/">OpenREPL</a>'
+  status: I’m a work in progress
+  job_title: Software Engineer IV
+  company: Software Engineer IV, Cisco Systems India Pvt. Ltd.
+  employer: Cisco
+  location: Bengaluru, India
+  email: kumarvickey45@gmail.com
+  badge: Please reach out to know more about me
+
+# Start of your career (YYYY-MM). Used to work out "11+ years" automatically.
+career_start: "2015-07"
+
+projects:
+  # Repositories shown under "My Projects", in this order.
+  # Stars, forks and language come live from GitHub.
+  include:
+    - Go-interpreter
+    - sish-lb
+    - go-dsa
+    - dsa
+    - raspi-mgr
+    - openrepl
+  # Optional: replace a repository's GitHub description on this site.
+  descriptions:
+    Go-interpreter: A Python-based Go interpreter, like the Python shell, for writing and running small Go snippets.
+    sish-lb: "An open source serveo/ngrok alternative: HTTP(S), WS(S) and TCP tunnels to localhost using only SSH, with load balancing."
+    go-dsa: A Go module implementing common data structures and algorithms.
+    dsa: Classic data structures implemented from scratch in C.
+    raspi-mgr: A service to manage different utilities on a Raspberry Pi.
+    openrepl: "The OpenREPL server: browser-based REPLs and terminals over WebSockets."
 
 social_media:
   # behance: your_username
@@ -55,43 +90,29 @@ social_media:
   # website: http://your_website_url
   # youtube: your_username
 
+# "My Interests" chips. tone can be blue (default), orange or green.
 topics:
-  - name: Golang
+  - name: golang
     web_url: https://github.com/topics/golang
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/go/go.png
-
-  - name: C
+  - name: c
     web_url: https://github.com/topics/c
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/c/c.png
-
-  - name: C++
+  - name: cpp
     web_url: https://github.com/topics/cpp
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/cpp/cpp.png
-
-  - name: Python
+  - name: python
     web_url: https://github.com/topics/python
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/python/python.png
-
-  - name: Computer Networks
+  - name: computer-networks
     web_url: https://github.com/topics/computer-networks
-    
-  - name: Distributed System
+  - name: distributed-systems
     web_url: https://github.com/vickeykumar/awesome-distributed-systems
-    
-  - name: REST API
+  - name: rest-api
     web_url: https://github.com/topics/rest-api
-
-  - name: Web design
-
   - name: data-mining
     web_url: https://github.com/topics/data-mining
-    
-  - name: Cooking 
-  
-  - name: Gardending
-
+  - name: web-design
+  - name: cooking
+    tone: orange
+  - name: gardening
+    tone: green
 
 google_verify: -Bkw7pK7wtbIc03TqHlnSuqfdkLHkRkkp9SgzRRgPlQ
-
-
-theme: jekyll-theme-tactile
+google_tag_manager: GTM-PCFP6QG

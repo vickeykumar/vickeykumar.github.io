@@ -1,0 +1,26 @@
+{%- comment -%}
+  Shared variables. Included at the top of every layout, because Jekyll renders
+  each layout separately and assignments don't carry across layouts.
+{%- endcomment -%}
+{%- assign user = site.github.owner -%}
+{%- assign profile = site.profile -%}
+{%- assign display_name = profile.name | default: user.name | default: user.login -%}
+{%- assign posts_total = site.posts | size -%}
+
+{%- comment -%} Years since career_start, e.g. 11 {%- endcomment -%}
+{%- assign now_y = site.time | date: '%Y' | plus: 0 -%}
+{%- assign now_m = site.time | date: '%m' | plus: 0 -%}
+{%- assign now_months = now_y | times: 12 | plus: now_m -%}
+{%- assign cs = site.career_start | default: '2015-07' | split: '-' -%}
+{%- assign cs_months = cs[0] | plus: 0 | times: 12 | plus: cs[1] -%}
+{%- assign career_years = now_months | minus: cs_months | divided_by: 12 -%}
+
+{%- comment -%} Live star count for the featured repository {%- endcomment -%}
+{%- assign featured_repo = site.github.public_repositories | where: 'name', site.data.profile.featured.repo | first -%}
+{%- assign openrepl_stars = featured_repo.stargazers_count | default: 0 -%}
+
+{%- if user.avatar_url contains '?' -%}
+  {%- assign avatar = user.avatar_url | append: '&s=300' -%}
+{%- else -%}
+  {%- assign avatar = user.avatar_url -%}
+{%- endif -%}
